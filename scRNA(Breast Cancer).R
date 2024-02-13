@@ -49,19 +49,7 @@ View(nsclc.seurat.obj@meta.data)
 top20 <- head(VariableFeatures(nsclc.seurat.obj), 20)
 plot1 <- VariableFeaturePlot(nsclc.seurat.obj)
 LabelPoints(plot = plot1, points = top20, repel = TRUE, xnudge = 0, ynudge = 0, max.overlaps = 100)
-# Visualize highly variable genes
-ggplot(data = your_data) +
-  geom_point(aes(x = x, y = y), size = 3) +  # Adjust the size as needed
-  theme_minimal()
 
-ggplot(data = your_data) +
-  geom_point(aes(x = x, y = y)) +
-  geom_text_repel(aes(label = gene_name), box.padding = 0.5) +
-  theme_minimal()
-ggplot(data = your_data) +
-  geom_point(aes(x = x, y = y)) +
-  geom_text(aes(label = gene_name), data = subset(your_data, gene_name %in% top20)) +
-  theme_minimal()
 ``
 unlabeled_points <- top20[!top20 %in% LabelPoints(plot = plot1, points = top20, repel = TRUE, xnudge = 0, ynudge = 0, max.overlaps = 100)$label]
 print(unlabeled_points)
